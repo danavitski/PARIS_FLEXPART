@@ -1,0 +1,14 @@
+/.vscode/
+*.nc
+*.hdf
+*.pkl
+*.pickle
+*PKG-INFO
+*pyc
+*.cpython
+*Zone.Identifier
+*slurm*
+*.sif
+*.hdf
+*.simg
+!lumia/ObsPack2018drought_2022update_withbackground_flexpartready.hdf

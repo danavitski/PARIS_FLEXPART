@@ -1,0 +1,13 @@
+loguru
+pandas
+tqdm
+netcdf4
+tables
+h5py
+cartopy
+xarray
+pint
+scipy
+
+[interactive]
+ipython

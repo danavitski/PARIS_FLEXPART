@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="flex_extract calculates the vertical velocity for FLEXPART">
+    
+    <meta name="author" content="Leopold Haimberger<sup>1</sup>" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>
+All Procedures &ndash; Flex_extract: Calculation of etadot
+</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Flex_extract: Calculation of etadot <small>7.1.2</small></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+        
+            <li><a href="../program/calc_etadot.html">Program</a></li>
+      
+            </ul>
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../program/calc_etadot.html">Program</a></li>
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+      <div class="row">
+        <div class="col-lg-12" id='text'>
+			 <h1>Procedures</h1>
+			 <table class="table table-striped">
+			 <thead><tr><th>Procedure</th><th>Location</th><th>Procedure Type</th><th>Description</th></tr></thead>
+			 <tbody>
+			 
+			   <tr><td><a href='../proc/contgl.html'>CONTGL</a></td><td><a href='../module/ftrafo.html'>FTRAFO</a></td><td>Subroutine</td><td><p>Calculation of divergence from the wind field (U,V)
+ in phase space. Returns fields of the componentens of the 
+ horizontal gradients XLAM,XPHI on the Gaussian grid</p></td></tr>
+			 
+			   <tr><td><a href='../proc/dplgnd.html'>DPLGND</a></td><td><a href='../module/phtogr.html'>PHTOGR</a></td><td>Subroutine</td><td><p>Calculates the derivatives of the normalised associated Legendre function 
+ from P00(X) to PLL(X) and writes them into the field DZ.
+ Order is P00(X),P01(X),P11(X),P02(X),P12(X),P22(X),..PLL(X)</p></td></tr>
+			 
+			   <tr><td><a href='../proc/gauleg.html'>GAULEG</a></td><td><a href='../module/phtogr.html'>PHTOGR</a></td><td>Subroutine</td><td><p>Calculates the Gaussian latitudes</p></td></tr>
+			 
+			   <tr><td><a href='../proc/grph213.html'>GRPH213</a></td><td><a href='../module/grtoph.html'>GRTOPH</a></td><td>Subroutine</td><td></td></tr>
+			 
+			   <tr><td><a href='../proc/grphsub.html'>GRPHSUB</a></td><td><a href='../module/grtoph.html'>GRTOPH</a></td><td>Subroutine</td><td><p>Carries out the transformation from the phase space into the physical
+ space on spherical coordinates</p></td></tr>
+			 
+			   <tr><td><a href='../proc/ia.html'>IA</a></td><td><a href='../sourcefile/calc_etadot.f90.html'>calc_etadot.f90</a></td><td>Function</td><td><p>Calculate something that is roughly log10( maxval(field1)/g ) [PS]           </p></td></tr>
+			 
+			   <tr><td><a href='../proc/legtr.html'>LEGTR</a></td><td><a href='../module/phtogr.html'>PHTOGR</a></td><td>Subroutine</td><td><p>Calculate the Fourier coefficients CXM</p></td></tr>
+			 
+			   <tr><td><a href='../proc/lgtr213.html'>LGTR213</a></td><td><a href='../module/grtoph.html'>GRTOPH</a></td><td>Subroutine</td><td><p>Calculates the KFFKs (Fourier coefficients) CXMN</p></td></tr>
+			 
+			   <tr><td><a href='../proc/omega.html'>OMEGA</a></td><td><a href='../module/ftrafo.html'>FTRAFO</a></td><td>Subroutine</td><td><p>Calculates <script type="math/tex">\omega</script> in the hybrid (<script type="math/tex">\eta</script>-)coordinate system</p></td></tr>
+			 
+			   <tr><td><a href='../proc/phgcut.html'>PHGCUT</a></td><td><a href='../module/phtogr.html'>PHTOGR</a></td><td>Subroutine</td><td><p>Carries out the transformation of a field variable from the phase space
+ into the physical space on spherical coordinates. It is possible to 
+ specify a section of the Earth. This subroutine is slower thatn PHGRPH.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/phgpns.html'>PHGPNS</a></td><td><a href='../module/phtogr.html'>PHTOGR</a></td><td>Subroutine</td><td></td></tr>
+			 
+			   <tr><td><a href='../proc/phgr213.html'>PHGR213</a></td><td><a href='../module/phtogr.html'>PHTOGR</a></td><td>Subroutine</td><td></td></tr>
+			 
+			   <tr><td><a href='../proc/phgracut.html'>PHGRACUT</a></td><td><a href='../module/ftrafo.html'>FTRAFO</a></td><td>Subroutine</td><td><p>Calculated the gradient of a scalar from the field of the scalar XMN 
+ in phase space. Returns the fields of the components of the horizontal
+ gradient XLAM,XPHI on the Gaussian grid</p></td></tr>
+			 
+			   <tr><td><a href='../proc/phgrad.html'>PHGRAD</a></td><td><a href='../module/ftrafo.html'>FTRAFO</a></td><td>Subroutine</td><td><p>Calculates the gradient of a scalar from the field of the scalar XMN
+ in phase space. Returns fields of the componentens of the horizontal
+ gradients XLAM,XPHI on the Gaussian grid.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/phsym.html'>PHSYM</a></td><td><a href='../module/phtogr.html'>PHTOGR</a></td><td>Subroutine</td><td></td></tr>
+			 
+			   <tr><td><a href='../proc/phsymcut.html'>PHSYMCUT</a></td><td><a href='../module/phtogr.html'>PHTOGR</a></td><td>Subroutine</td><td></td></tr>
+			 
+			   <tr><td><a href='../proc/plgnfa.html'>PLGNFA</a></td><td><a href='../module/phtogr.html'>PHTOGR</a></td><td>Subroutine</td><td><p>Calculates all normalised associated Legendre functions from 
+ P00(X) to PLL(X) and writes them into the field Z.
+ The polynomials have indices as with ECMWF, i.e.
+ P00,P10,P11,P20,P21,P22,...
+ Otherwise, this subroutine is analogous to PLGNDN</p></td></tr>
+			 
+			   <tr><td><a href='../proc/posnam.html'>POSNAM</a></td><td><a href='../sourcefile/posnam.f90.html'>posnam.f90</a></td><td>Subroutine</td><td><p>Position in namelist file.
+ Author:  Mats Hamrud, ECMWF</p></td></tr>
+			 
+			   <tr><td><a href='../proc/readlatlon.html'>READLATLON</a></td><td><a href='../module/rwgrib2.html'>RWGRIB2</a></td><td>Subroutine</td><td><p>Read a field from GRIB file on lat-lon grid</p></td></tr>
+			 
+			   <tr><td><a href='../proc/readspectral.html'>READSPECTRAL</a></td><td><a href='../module/rwgrib2.html'>RWGRIB2</a></td><td>Subroutine</td><td><p>Read a GRIB file in spherical harmonics</p></td></tr>
+			 
+			   <tr><td><a href='../proc/rfouftr.html'>RFOUFTR</a></td><td><a href='../module/grtoph.html'>GRTOPH</a></td><td>Subroutine</td><td><p>Calculates the Fourier sum with an FFT algorithm</p></td></tr>
+			 
+			   <tr><td><a href='../proc/rfourtr.html'>RFOURTR</a></td><td><a href='../module/phtogr.html'>PHTOGR</a></td><td>Subroutine</td><td><p>Calculates the Fourier sum with an FFT algorithm</p></td></tr>
+			 
+			   <tr><td><a href='../proc/spfilter.html'>SPFILTER</a></td><td><a href='../module/phtogr.html'>PHTOGR</a></td><td>Subroutine</td><td><p>Implements spectral filter of Sardeshmukh and Hoskins (MWR 1984)</p></td></tr>
+			 
+			   <tr><td><a href='../proc/statis.html'>STATIS</a></td><td><a href='../sourcefile/calc_etadot.f90.html'>calc_etadot.f90</a></td><td>Subroutine</td><td><p>calculate mean, rms, stdev</p></td></tr>
+			 
+			   <tr><td><a href='../proc/vdtouv.html'>VDTOUV</a></td><td><a href='../module/ftrafo.html'>FTRAFO</a></td><td>Subroutine</td><td><p>Calculates scale winds from vorticity and divergence.
+ If in XMN the divergence is passed, then the divergent part of the wind
+ (XPHI=Ud,XPHI=Vd) is returned. If vorticity is passed, then the 
+ rotational part of the wind (XLAM=Vrot,XPHI=-Urot) is returned.
+ Summing both, one obtains the whole scale wind.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/vduvsub.html'>VDUVSUB</a></td><td><a href='../module/ftrafo.html'>FTRAFO</a></td><td>Subroutine</td><td></td></tr>
+			 
+			   <tr><td><a href='../proc/writelatlon.html'>WRITELATLON</a></td><td><a href='../module/rwgrib2.html'>RWGRIB2</a></td><td>Subroutine</td><td><p>write a field on lat-lon grid to GRIB file</p></td></tr>
+			 
+			 </tbody></table>
+             <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.38.0 (20140413.2041)
+ -->
+<!-- Title: call~~graph~~CallGraph Pages: 1 -->
+<svg id="callgraphCallGraph" width="551pt" height="973pt"
+ viewBox="0.00 0.00 551.00 973.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="call~~graph~~CallGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 969)">
+<title>call~~graph~~CallGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-969 547,-969 547,4 -4,4"/>
+<!-- proc~phgpns -->
+<g id="call~~graph~~CallGraph_node1" class="node"><title>proc~phgpns</title>
+<g id="a_call~~graph~~CallGraph_node1"><a xlink:href=".././proc/phgpns.html" xlink:title="PHGPNS">
+<polygon fill="#d9534f" stroke="#d9534f" points="332.5,-482 276.5,-482 276.5,-458 332.5,-458 332.5,-482"/>
+<text text-anchor="middle" x="304.5" y="-467.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PHGPNS</text>
+</a>
+</g>
+</g>
+<!-- proc~rfourtr -->
+<g id="call~~graph~~CallGraph_node24" class="node"><title>proc~rfourtr</title>
+<g id="a_call~~graph~~CallGraph_node24"><a xlink:href=".././proc/rfourtr.html" xlink:title="RFOURTR">
+<polygon fill="#d9534f" stroke="#d9534f" points="453,-482 389,-482 389,-458 453,-458 453,-482"/>
+<text text-anchor="middle" x="421" y="-467.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RFOURTR</text>
+</a>
+</g>
+</g>
+<!-- proc~phgpns&#45;&gt;proc~rfourtr -->
+<g id="call~~graph~~CallGraph_edge1" class="edge"><title>proc~phgpns&#45;&gt;proc~rfourtr</title>
+<path fill="none" stroke="#000000" d="M332.635,-470C346.283,-470 363.123,-470 378.364,-470"/>
+<polygon fill="#000000" stroke="#000000" points="378.601,-473.5 388.601,-470 378.601,-466.5 378.601,-473.5"/>
+</g>
+<!-- proc~writelatlon -->
+<g id="call~~graph~~CallGraph_node2" class="node"><title>proc~writelatlon</title>
+<g id="a_call~~graph~~CallGraph_node2"><a xlink:href=".././proc/writelatlon.html" xlink:title="WRITELATLON">
+<polygon fill="#d9534f" stroke="#d9534f" points="88,-545 7.10543e-15,-545 7.10543e-15,-521 88,-521 88,-545"/>
+<text text-anchor="middle" x="44" y="-530.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">WRITELATLON</text>
+</a>
+</g>
+</g>
+<!-- grib_set -->
+<g id="call~~graph~~CallGraph_node32" class="node"><title>grib_set</title>
+<polygon fill="#777777" stroke="#777777" points="199,-566 145,-566 145,-542 199,-542 199,-566"/>
+<text text-anchor="middle" x="172" y="-551.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">grib_set</text>
+</g>
+<!-- proc~writelatlon&#45;&gt;grib_set -->
+<g id="call~~graph~~CallGraph_edge3" class="edge"><title>proc~writelatlon&#45;&gt;grib_set</title>
+<path fill="none" stroke="#000000" d="M88.0096,-540.168C103.155,-542.692 120.019,-545.503 134.569,-547.928"/>
+<polygon fill="#000000" stroke="#000000" points="134.257,-551.424 144.697,-549.616 135.408,-544.52 134.257,-551.424"/>
+</g>
+<!-- grib_write -->
+<g id="call~~graph~~CallGraph_node35" class="node"><title>grib_write</title>
+<polygon fill="#777777" stroke="#777777" points="201.5,-524 142.5,-524 142.5,-500 201.5,-500 201.5,-524"/>
+<text text-anchor="middle" x="172" y="-509.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">grib_write</text>
+</g>
+<!-- proc~writelatlon&#45;&gt;grib_write -->
+<g id="call~~graph~~CallGraph_edge2" class="edge"><title>proc~writelatlon&#45;&gt;grib_write</title>
+<path fill="none" stroke="#000000" d="M88.0096,-525.832C102.326,-523.446 118.179,-520.804 132.16,-518.473"/>
+<polygon fill="#000000" stroke="#000000" points="133.142,-521.858 142.431,-516.762 131.991,-514.953 133.142,-521.858"/>
+</g>
+<!-- proc~omega -->
+<g id="call~~graph~~CallGraph_node3" class="node"><title>proc~omega</title>
+<g id="a_call~~graph~~CallGraph_node3"><a xlink:href=".././proc/omega.html" xlink:title="OMEGA">
+<polygon fill="#d9534f" stroke="#d9534f" points="71,-587 17,-587 17,-563 71,-563 71,-587"/>
+<text text-anchor="middle" x="44" y="-572.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OMEGA</text>
+</a>
+</g>
+</g>
+<!-- proc~lgtr213 -->
+<g id="call~~graph~~CallGraph_node4" class="node"><title>proc~lgtr213</title>
+<g id="a_call~~graph~~CallGraph_node4"><a xlink:href=".././proc/lgtr213.html" xlink:title="LGTR213">
+<polygon fill="#d9534f" stroke="#d9534f" points="73.5,-629 14.5,-629 14.5,-605 73.5,-605 73.5,-629"/>
+<text text-anchor="middle" x="44" y="-614.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">LGTR213</text>
+</a>
+</g>
+</g>
+<!-- proc~contgl -->
+<g id="call~~graph~~CallGraph_node5" class="node"><title>proc~contgl</title>
+<g id="a_call~~graph~~CallGraph_node5"><a xlink:href=".././proc/contgl.html" xlink:title="CONTGL">
+<polygon fill="#d9534f" stroke="#d9534f" points="72.5,-671 15.5,-671 15.5,-647 72.5,-647 72.5,-671"/>
+<text text-anchor="middle" x="44" y="-656.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">CONTGL</text>
+</a>
+</g>
+</g>
+<!-- proc~plgnfa -->
+<g id="call~~graph~~CallGraph_node6" class="node"><title>proc~plgnfa</title>
+<g id="a_call~~graph~~CallGraph_node6"><a xlink:href=".././proc/plgnfa.html" xlink:title="PLGNFA">
+<polygon fill="#d9534f" stroke="#d9534f" points="71.5,-713 16.5,-713 16.5,-689 71.5,-689 71.5,-713"/>
+<text text-anchor="middle" x="44" y="-698.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PLGNFA</text>
+</a>
+</g>
+</g>
+<!-- proc~posnam -->
+<g id="call~~graph~~CallGraph_node7" class="node"><title>proc~posnam</title>
+<g id="a_call~~graph~~CallGraph_node7"><a xlink:href=".././proc/posnam.html" xlink:title="POSNAM">
+<polygon fill="#d9534f" stroke="#d9534f" points="201,-440 143,-440 143,-416 201,-416 201,-440"/>
+<text text-anchor="middle" x="172" y="-425.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">POSNAM</text>
+</a>
+</g>
+</g>
+<!-- proc~gauleg -->
+<g id="call~~graph~~CallGraph_node8" class="node"><title>proc~gauleg</title>
+<g id="a_call~~graph~~CallGraph_node8"><a xlink:href=".././proc/gauleg.html" xlink:title="GAULEG">
+<polygon fill="#d9534f" stroke="#d9534f" points="200,-398 144,-398 144,-374 200,-374 200,-398"/>
+<text text-anchor="middle" x="172" y="-383.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">GAULEG</text>
+</a>
+</g>
+</g>
+<!-- dcos -->
+<g id="call~~graph~~CallGraph_node33" class="node"><title>dcos</title>
+<polygon fill="#777777" stroke="#777777" points="331.5,-398 277.5,-398 277.5,-374 331.5,-374 331.5,-398"/>
+<text text-anchor="middle" x="304.5" y="-383.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dcos</text>
+</g>
+<!-- proc~gauleg&#45;&gt;dcos -->
+<g id="call~~graph~~CallGraph_edge4" class="edge"><title>proc~gauleg&#45;&gt;dcos</title>
+<path fill="none" stroke="#000000" d="M200.04,-386C219.455,-386 245.84,-386 267.104,-386"/>
+<polygon fill="#000000" stroke="#000000" points="267.385,-389.5 277.385,-386 267.385,-382.5 267.385,-389.5"/>
+</g>
+<!-- proc~dplgnd -->
+<g id="call~~graph~~CallGraph_node9" class="node"><title>proc~dplgnd</title>
+<g id="a_call~~graph~~CallGraph_node9"><a xlink:href=".././proc/dplgnd.html" xlink:title="DPLGND">
+<polygon fill="#d9534f" stroke="#d9534f" points="72,-755 16,-755 16,-731 72,-731 72,-755"/>
+<text text-anchor="middle" x="44" y="-740.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">DPLGND</text>
+</a>
+</g>
+</g>
+<!-- proc~phgcut -->
+<g id="call~~graph~~CallGraph_node10" class="node"><title>proc~phgcut</title>
+<g id="a_call~~graph~~CallGraph_node10"><a xlink:href=".././proc/phgcut.html" xlink:title="PHGCUT">
+<polygon fill="#d9534f" stroke="#d9534f" points="200.5,-482 143.5,-482 143.5,-458 200.5,-458 200.5,-482"/>
+<text text-anchor="middle" x="172" y="-467.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PHGCUT</text>
+</a>
+</g>
+</g>
+<!-- proc~phgcut&#45;&gt;proc~phgpns -->
+<g id="call~~graph~~CallGraph_edge6" class="edge"><title>proc~phgcut&#45;&gt;proc~phgpns</title>
+<path fill="none" stroke="#000000" d="M200.676,-470C219.749,-470 245.32,-470 266.19,-470"/>
+<polygon fill="#000000" stroke="#000000" points="266.312,-473.5 276.312,-470 266.312,-466.5 266.312,-473.5"/>
+</g>
+<!-- proc~phsymcut -->
+<g id="call~~graph~~CallGraph_node11" class="node"><title>proc~phsymcut</title>
+<g id="a_call~~graph~~CallGraph_node11"><a xlink:href=".././proc/phsymcut.html" xlink:title="PHSYMCUT">
+<polygon fill="#d9534f" stroke="#d9534f" points="340,-524 269,-524 269,-500 340,-500 340,-524"/>
+<text text-anchor="middle" x="304.5" y="-509.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PHSYMCUT</text>
+</a>
+</g>
+</g>
+<!-- proc~phgcut&#45;&gt;proc~phsymcut -->
+<g id="call~~graph~~CallGraph_edge5" class="edge"><title>proc~phgcut&#45;&gt;proc~phsymcut</title>
+<path fill="none" stroke="#000000" d="M200.676,-478.907C217.701,-484.387 239.904,-491.532 259.318,-497.781"/>
+<polygon fill="#000000" stroke="#000000" points="258.29,-501.126 268.882,-500.858 260.435,-494.463 258.29,-501.126"/>
+</g>
+<!-- proc~phsymcut&#45;&gt;proc~rfourtr -->
+<g id="call~~graph~~CallGraph_edge7" class="edge"><title>proc~phsymcut&#45;&gt;proc~rfourtr</title>
+<path fill="none" stroke="#000000" d="M338.311,-499.964C351.073,-495.283 365.83,-489.87 379.262,-484.943"/>
+<polygon fill="#000000" stroke="#000000" points="380.577,-488.189 388.76,-481.459 378.166,-481.617 380.577,-488.189"/>
+</g>
+<!-- proc~rfouftr -->
+<g id="call~~graph~~CallGraph_node12" class="node"><title>proc~rfouftr</title>
+<g id="a_call~~graph~~CallGraph_node12"><a xlink:href=".././proc/rfouftr.html" xlink:title="RFOUFTR">
+<polygon fill="#d9534f" stroke="#d9534f" points="453,-440 389,-440 389,-416 453,-416 453,-440"/>
+<text text-anchor="middle" x="421" y="-425.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RFOUFTR</text>
+</a>
+</g>
+</g>
+<!-- fft99 -->
+<g id="call~~graph~~CallGraph_node31" class="node"><title>fft99</title>
+<polygon fill="#777777" stroke="#777777" points="543,-482 489,-482 489,-458 543,-458 543,-482"/>
+<text text-anchor="middle" x="516" y="-467.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">fft99</text>
+</g>
+<!-- proc~rfouftr&#45;&gt;fft99 -->
+<g id="call~~graph~~CallGraph_edge9" class="edge"><title>proc~rfouftr&#45;&gt;fft99</title>
+<path fill="none" stroke="#000000" d="M448.899,-440.148C458.412,-444.444 469.265,-449.345 479.388,-453.917"/>
+<polygon fill="#000000" stroke="#000000" points="478.248,-457.243 488.802,-458.169 481.129,-450.863 478.248,-457.243"/>
+</g>
+<!-- wsave -->
+<g id="call~~graph~~CallGraph_node39" class="node"><title>wsave</title>
+<polygon fill="#777777" stroke="#777777" points="543,-440 489,-440 489,-416 543,-416 543,-440"/>
+<text text-anchor="middle" x="516" y="-425.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">wsave</text>
+</g>
+<!-- proc~rfouftr&#45;&gt;wsave -->
+<g id="call~~graph~~CallGraph_edge8" class="edge"><title>proc~rfouftr&#45;&gt;wsave</title>
+<path fill="none" stroke="#000000" d="M453.226,-428C461.48,-428 470.455,-428 478.941,-428"/>
+<polygon fill="#000000" stroke="#000000" points="478.969,-431.5 488.969,-428 478.969,-424.5 478.969,-431.5"/>
+</g>
+<!-- proc~phsym -->
+<g id="call~~graph~~CallGraph_node13" class="node"><title>proc~phsym</title>
+<g id="a_call~~graph~~CallGraph_node13"><a xlink:href=".././proc/phsym.html" xlink:title="PHSYM">
+<polygon fill="#d9534f" stroke="#d9534f" points="331.5,-188 277.5,-188 277.5,-164 331.5,-164 331.5,-188"/>
+<text text-anchor="middle" x="304.5" y="-173.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PHSYM</text>
+</a>
+</g>
+</g>
+<!-- proc~readlatlon -->
+<g id="call~~graph~~CallGraph_node14" class="node"><title>proc~readlatlon</title>
+<g id="a_call~~graph~~CallGraph_node14"><a xlink:href=".././proc/readlatlon.html" xlink:title="READLATLON">
+<polygon fill="#d9534f" stroke="#d9534f" points="213,-356 131,-356 131,-332 213,-332 213,-356"/>
+<text text-anchor="middle" x="172" y="-341.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">READLATLON</text>
+</a>
+</g>
+</g>
+<!-- grib_count_in_file -->
+<g id="call~~graph~~CallGraph_node34" class="node"><title>grib_count_in_file</title>
+<polygon fill="#777777" stroke="#777777" points="353,-356 256,-356 256,-332 353,-332 353,-356"/>
+<text text-anchor="middle" x="304.5" y="-341.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">grib_count_in_file</text>
+</g>
+<!-- proc~readlatlon&#45;&gt;grib_count_in_file -->
+<g id="call~~graph~~CallGraph_edge10" class="edge"><title>proc~readlatlon&#45;&gt;grib_count_in_file</title>
+<path fill="none" stroke="#000000" d="M213.219,-344C223.435,-344 234.615,-344 245.521,-344"/>
+<polygon fill="#000000" stroke="#000000" points="245.853,-347.5 255.853,-344 245.853,-340.5 245.853,-347.5"/>
+</g>
+<!-- grib_close_file -->
+<g id="call~~graph~~CallGraph_node40" class="node"><title>grib_close_file</title>
+<polygon fill="#777777" stroke="#777777" points="345,-314 264,-314 264,-290 345,-290 345,-314"/>
+<text text-anchor="middle" x="304.5" y="-299.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">grib_close_file</text>
+</g>
+<!-- proc~readlatlon&#45;&gt;grib_close_file -->
+<g id="call~~graph~~CallGraph_edge11" class="edge"><title>proc~readlatlon&#45;&gt;grib_close_file</title>
+<path fill="none" stroke="#000000" d="M210.396,-331.964C224.73,-327.351 241.271,-322.028 256.399,-317.159"/>
+<polygon fill="#000000" stroke="#000000" points="257.652,-320.433 266.098,-314.037 255.507,-313.769 257.652,-320.433"/>
+</g>
+<!-- proc~vdtouv -->
+<g id="call~~graph~~CallGraph_node15" class="node"><title>proc~vdtouv</title>
+<g id="a_call~~graph~~CallGraph_node15"><a xlink:href=".././proc/vdtouv.html" xlink:title="VDTOUV">
+<polygon fill="#d9534f" stroke="#d9534f" points="72,-797 16,-797 16,-773 72,-773 72,-797"/>
+<text text-anchor="middle" x="44" y="-782.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">VDTOUV</text>
+</a>
+</g>
+</g>
+<!-- proc~legtr -->
+<g id="call~~graph~~CallGraph_node16" class="node"><title>proc~legtr</title>
+<g id="a_call~~graph~~CallGraph_node16"><a xlink:href=".././proc/legtr.html" xlink:title="LEGTR">
+<polygon fill="#d9534f" stroke="#d9534f" points="71,-839 17,-839 17,-815 71,-815 71,-839"/>
+<text text-anchor="middle" x="44" y="-824.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">LEGTR</text>
+</a>
+</g>
+</g>
+<!-- proc~phgracut -->
+<g id="call~~graph~~CallGraph_node17" class="node"><title>proc~phgracut</title>
+<g id="a_call~~graph~~CallGraph_node17"><a xlink:href=".././proc/phgracut.html" xlink:title="PHGRACUT">
+<polygon fill="#d9534f" stroke="#d9534f" points="340,-440 269,-440 269,-416 340,-416 340,-440"/>
+<text text-anchor="middle" x="304.5" y="-425.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PHGRACUT</text>
+</a>
+</g>
+</g>
+<!-- proc~phgracut&#45;&gt;proc~rfourtr -->
+<g id="call~~graph~~CallGraph_edge12" class="edge"><title>proc~phgracut&#45;&gt;proc~rfourtr</title>
+<path fill="none" stroke="#000000" d="M338.311,-440.036C351.073,-444.717 365.83,-450.13 379.262,-455.057"/>
+<polygon fill="#000000" stroke="#000000" points="378.166,-458.383 388.76,-458.541 380.577,-451.811 378.166,-458.383"/>
+</g>
+<!-- proc~grph213 -->
+<g id="call~~graph~~CallGraph_node18" class="node"><title>proc~grph213</title>
+<g id="a_call~~graph~~CallGraph_node18"><a xlink:href=".././proc/grph213.html" xlink:title="GRPH213">
+<polygon fill="#d9534f" stroke="#d9534f" points="202.5,-234 141.5,-234 141.5,-210 202.5,-210 202.5,-234"/>
+<text text-anchor="middle" x="172" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">GRPH213</text>
+</a>
+</g>
+</g>
+<!-- proc~grphsub -->
+<g id="call~~graph~~CallGraph_node19" class="node"><title>proc~grphsub</title>
+<g id="a_call~~graph~~CallGraph_node19"><a xlink:href=".././proc/grphsub.html" xlink:title="GRPHSUB">
+<polygon fill="#d9534f" stroke="#d9534f" points="336.5,-230 272.5,-230 272.5,-206 336.5,-206 336.5,-230"/>
+<text text-anchor="middle" x="304.5" y="-215.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">GRPHSUB</text>
+</a>
+</g>
+</g>
+<!-- proc~grph213&#45;&gt;proc~grphsub -->
+<g id="call~~graph~~CallGraph_edge14" class="edge"><title>proc~grph213&#45;&gt;proc~grphsub</title>
+<path fill="none" stroke="#000000" d="M202.612,-221.092C220.206,-220.553 242.786,-219.861 262.122,-219.268"/>
+<polygon fill="#000000" stroke="#000000" points="262.297,-222.765 272.185,-218.96 262.082,-215.768 262.297,-222.765"/>
+</g>
+<!-- ind -->
+<g id="call~~graph~~CallGraph_node30" class="node"><title>ind</title>
+<polygon fill="#777777" stroke="#777777" points="331.5,-272 277.5,-272 277.5,-248 331.5,-248 331.5,-272"/>
+<text text-anchor="middle" x="304.5" y="-257.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ind</text>
+</g>
+<!-- proc~grph213&#45;&gt;ind -->
+<g id="call~~graph~~CallGraph_edge13" class="edge"><title>proc~grph213&#45;&gt;ind</title>
+<path fill="none" stroke="#000000" d="M202.612,-230.623C221.783,-236.205 246.875,-243.512 267.239,-249.441"/>
+<polygon fill="#000000" stroke="#000000" points="266.524,-252.878 277.104,-252.314 268.481,-246.157 266.524,-252.878"/>
+</g>
+<!-- proc~readspectral -->
+<g id="call~~graph~~CallGraph_node20" class="node"><title>proc~readspectral</title>
+<g id="a_call~~graph~~CallGraph_node20"><a xlink:href=".././proc/readspectral.html" xlink:title="READSPECTRAL">
+<polygon fill="#d9534f" stroke="#d9534f" points="220,-314 124,-314 124,-290 220,-290 220,-314"/>
+<text text-anchor="middle" x="172" y="-299.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">READSPECTRAL</text>
+</a>
+</g>
+</g>
+<!-- proc~readspectral&#45;&gt;grib_count_in_file -->
+<g id="call~~graph~~CallGraph_edge15" class="edge"><title>proc~readspectral&#45;&gt;grib_count_in_file</title>
+<path fill="none" stroke="#000000" d="M210.396,-314.036C224.73,-318.649 241.271,-323.972 256.399,-328.841"/>
+<polygon fill="#000000" stroke="#000000" points="255.507,-332.231 266.098,-331.963 257.652,-325.567 255.507,-332.231"/>
+</g>
+<!-- proc~readspectral&#45;&gt;grib_close_file -->
+<g id="call~~graph~~CallGraph_edge16" class="edge"><title>proc~readspectral&#45;&gt;grib_close_file</title>
+<path fill="none" stroke="#000000" d="M220.113,-302C230.957,-302 242.527,-302 253.49,-302"/>
+<polygon fill="#000000" stroke="#000000" points="253.77,-305.5 263.77,-302 253.77,-298.5 253.77,-305.5"/>
+</g>
+<!-- proc~phgr213 -->
+<g id="call~~graph~~CallGraph_node21" class="node"><title>proc~phgr213</title>
+<g id="a_call~~graph~~CallGraph_node21"><a xlink:href=".././proc/phgr213.html" xlink:title="PHGR213">
+<polygon fill="#d9534f" stroke="#d9534f" points="202.5,-192 141.5,-192 141.5,-168 202.5,-168 202.5,-192"/>
+<text text-anchor="middle" x="172" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PHGR213</text>
+</a>
+</g>
+</g>
+<!-- proc~phgr213&#45;&gt;proc~phsym -->
+<g id="call~~graph~~CallGraph_edge17" class="edge"><title>proc~phgr213&#45;&gt;proc~phsym</title>
+<path fill="none" stroke="#000000" d="M202.612,-179.092C221.696,-178.507 246.646,-177.743 266.959,-177.12"/>
+<polygon fill="#000000" stroke="#000000" points="267.216,-180.614 277.104,-176.809 267.001,-173.617 267.216,-180.614"/>
+</g>
+<!-- proc~phgrad -->
+<g id="call~~graph~~CallGraph_node22" class="node"><title>proc~phgrad</title>
+<g id="a_call~~graph~~CallGraph_node22"><a xlink:href=".././proc/phgrad.html" xlink:title="PHGRAD">
+<polygon fill="#d9534f" stroke="#d9534f" points="200.5,-150 143.5,-150 143.5,-126 200.5,-126 200.5,-150"/>
+<text text-anchor="middle" x="172" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PHGRAD</text>
+</a>
+</g>
+</g>
+<!-- proc~spfilter -->
+<g id="call~~graph~~CallGraph_node23" class="node"><title>proc~spfilter</title>
+<g id="a_call~~graph~~CallGraph_node23"><a xlink:href=".././proc/spfilter.html" xlink:title="SPFILTER">
+<polygon fill="#d9534f" stroke="#d9534f" points="75.5,-881 12.5,-881 12.5,-857 75.5,-857 75.5,-881"/>
+<text text-anchor="middle" x="44" y="-866.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">SPFILTER</text>
+</a>
+</g>
+</g>
+<!-- float -->
+<g id="call~~graph~~CallGraph_node29" class="node"><title>float</title>
+<polygon fill="#777777" stroke="#777777" points="199,-902 145,-902 145,-878 199,-878 199,-902"/>
+<text text-anchor="middle" x="172" y="-887.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">float</text>
+</g>
+<!-- proc~spfilter&#45;&gt;float -->
+<g id="call~~graph~~CallGraph_edge18" class="edge"><title>proc~spfilter&#45;&gt;float</title>
+<path fill="none" stroke="#000000" d="M75.5011,-874.084C93.3222,-877.054 115.921,-880.82 134.661,-883.943"/>
+<polygon fill="#000000" stroke="#000000" points="134.18,-887.412 144.62,-885.603 135.331,-880.507 134.18,-887.412"/>
+</g>
+<!-- alog -->
+<g id="call~~graph~~CallGraph_node37" class="node"><title>alog</title>
+<polygon fill="#777777" stroke="#777777" points="199,-860 145,-860 145,-836 199,-836 199,-860"/>
+<text text-anchor="middle" x="172" y="-845.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">alog</text>
+</g>
+<!-- proc~spfilter&#45;&gt;alog -->
+<g id="call~~graph~~CallGraph_edge19" class="edge"><title>proc~spfilter&#45;&gt;alog</title>
+<path fill="none" stroke="#000000" d="M75.5011,-863.916C93.3222,-860.946 115.921,-857.18 134.661,-854.057"/>
+<polygon fill="#000000" stroke="#000000" points="135.331,-857.493 144.62,-852.397 134.18,-850.588 135.331,-857.493"/>
+</g>
+<!-- proc~rfourtr&#45;&gt;fft99 -->
+<g id="call~~graph~~CallGraph_edge20" class="edge"><title>proc~rfourtr&#45;&gt;fft99</title>
+<path fill="none" stroke="#000000" d="M453.226,-470C461.48,-470 470.455,-470 478.941,-470"/>
+<polygon fill="#000000" stroke="#000000" points="478.969,-473.5 488.969,-470 478.969,-466.5 478.969,-473.5"/>
+</g>
+<!-- proc~ia -->
+<g id="call~~graph~~CallGraph_node25" class="node"><title>proc~ia</title>
+<g id="a_call~~graph~~CallGraph_node25"><a xlink:href=".././proc/ia.html" xlink:title="IA">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="71,-923 17,-923 17,-899 71,-899 71,-923"/>
+<text text-anchor="middle" x="44" y="-908.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">IA</text>
+</a>
+</g>
+</g>
+<!-- proc~statis -->
+<g id="call~~graph~~CallGraph_node26" class="node"><title>proc~statis</title>
+<g id="a_call~~graph~~CallGraph_node26"><a xlink:href=".././proc/statis.html" xlink:title="STATIS">
+<polygon fill="#d9534f" stroke="#d9534f" points="199,-108 145,-108 145,-84 199,-84 199,-108"/>
+<text text-anchor="middle" x="172" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">STATIS</text>
+</a>
+</g>
+</g>
+<!-- proc~vduvsub -->
+<g id="call~~graph~~CallGraph_node27" class="node"><title>proc~vduvsub</title>
+<g id="a_call~~graph~~CallGraph_node27"><a xlink:href=".././proc/vduvsub.html" xlink:title="VDUVSUB">
+<polygon fill="#d9534f" stroke="#d9534f" points="75,-965 13,-965 13,-941 75,-941 75,-965"/>
+<text text-anchor="middle" x="44" y="-950.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">VDUVSUB</text>
+</a>
+</g>
+</g>
+<!-- program~calc_etadot -->
+<g id="call~~graph~~CallGraph_node28" class="node"><title>program~calc_etadot</title>
+<g id="a_call~~graph~~CallGraph_node28"><a xlink:href=".././program/calc_etadot.html" xlink:title="calc_etadot">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="77.5,-254 10.5,-254 10.5,-230 77.5,-230 77.5,-254"/>
+<text text-anchor="middle" x="44" y="-239.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">calc_etadot</text>
+</a>
+</g>
+</g>
+<!-- program~calc_etadot&#45;&gt;proc~posnam -->
+<g id="call~~graph~~CallGraph_edge30" class="edge"><title>program~calc_etadot&#45;&gt;proc~posnam</title>
+<path fill="none" stroke="#000000" d="M47.7094,-254.062C54.979,-283.858 77.5871,-361.794 124,-407 126.871,-409.796 130.178,-412.257 133.681,-414.415"/>
+<polygon fill="#000000" stroke="#000000" points="132.178,-417.58 142.653,-419.17 135.457,-411.395 132.178,-417.58"/>
+</g>
+<!-- program~calc_etadot&#45;&gt;proc~gauleg -->
+<g id="call~~graph~~CallGraph_edge26" class="edge"><title>program~calc_etadot&#45;&gt;proc~gauleg</title>
+<path fill="none" stroke="#000000" d="M49.9261,-254.128C60.2776,-278.259 86.47,-332.74 124,-365 127.202,-367.753 130.824,-370.205 134.6,-372.373"/>
+<polygon fill="#000000" stroke="#000000" points="133.069,-375.521 143.57,-376.926 136.237,-369.279 133.069,-375.521"/>
+</g>
+<!-- program~calc_etadot&#45;&gt;proc~phgcut -->
+<g id="call~~graph~~CallGraph_edge22" class="edge"><title>program~calc_etadot&#45;&gt;proc~phgcut</title>
+<path fill="none" stroke="#000000" d="M46.4244,-254.464C51.06,-289.585 68.7558,-390.595 124,-449 126.971,-452.141 130.497,-454.845 134.263,-457.164"/>
+<polygon fill="#000000" stroke="#000000" points="132.852,-460.376 143.336,-461.905 136.094,-454.172 132.852,-460.376"/>
+</g>
+<!-- program~calc_etadot&#45;&gt;proc~readlatlon -->
+<g id="call~~graph~~CallGraph_edge31" class="edge"><title>program~calc_etadot&#45;&gt;proc~readlatlon</title>
+<path fill="none" stroke="#000000" d="M54.3146,-254.116C68.0277,-271.298 95.1606,-302.884 124,-323 125.906,-324.329 127.909,-325.605 129.971,-326.825"/>
+<polygon fill="#000000" stroke="#000000" points="128.793,-330.164 139.26,-331.803 132.1,-323.995 128.793,-330.164"/>
+</g>
+<!-- program~calc_etadot&#45;&gt;proc~grph213 -->
+<g id="call~~graph~~CallGraph_edge23" class="edge"><title>program~calc_etadot&#45;&gt;proc~grph213</title>
+<path fill="none" stroke="#000000" d="M77.7761,-236.797C94.0798,-234.21 113.923,-231.06 131.104,-228.333"/>
+<polygon fill="#000000" stroke="#000000" points="132.075,-231.722 141.403,-226.698 130.978,-224.809 132.075,-231.722"/>
+</g>
+<!-- program~calc_etadot&#45;&gt;proc~readspectral -->
+<g id="call~~graph~~CallGraph_edge21" class="edge"><title>program~calc_etadot&#45;&gt;proc~readspectral</title>
+<path fill="none" stroke="#000000" d="M70.498,-254.142C89.4551,-263.169 115.535,-275.588 136.377,-285.513"/>
+<polygon fill="#000000" stroke="#000000" points="135.007,-288.737 145.54,-289.876 138.016,-282.417 135.007,-288.737"/>
+</g>
+<!-- program~calc_etadot&#45;&gt;proc~phgr213 -->
+<g id="call~~graph~~CallGraph_edge25" class="edge"><title>program~calc_etadot&#45;&gt;proc~phgr213</title>
+<path fill="none" stroke="#000000" d="M67.2982,-229.984C83.0266,-221.618 104.654,-210.332 124,-201 127.154,-199.478 130.444,-197.93 133.755,-196.4"/>
+<polygon fill="#000000" stroke="#000000" points="135.392,-199.5 143.041,-192.17 132.49,-193.13 135.392,-199.5"/>
+</g>
+<!-- program~calc_etadot&#45;&gt;proc~phgrad -->
+<g id="call~~graph~~CallGraph_edge29" class="edge"><title>program~calc_etadot&#45;&gt;proc~phgrad</title>
+<path fill="none" stroke="#000000" d="M54.0216,-229.861C67.5798,-212.303 94.7557,-179.664 124,-159 127.102,-156.808 130.469,-154.765 133.929,-152.882"/>
+<polygon fill="#000000" stroke="#000000" points="135.787,-155.867 143.181,-148.279 132.668,-149.6 135.787,-155.867"/>
+</g>
+<!-- program~calc_etadot&#45;&gt;proc~statis -->
+<g id="call~~graph~~CallGraph_edge24" class="edge"><title>program~calc_etadot&#45;&gt;proc~statis</title>
+<path fill="none" stroke="#000000" d="M49.8727,-229.673C60.1282,-205.144 86.1565,-149.771 124,-117 127.437,-114.024 131.364,-111.401 135.451,-109.109"/>
+<polygon fill="#000000" stroke="#000000" points="137.12,-112.188 144.524,-104.61 134.01,-105.916 137.12,-112.188"/>
+</g>
+<!-- set99 -->
+<g id="call~~graph~~CallGraph_node36" class="node"><title>set99</title>
+<polygon fill="#777777" stroke="#777777" points="199,-66 145,-66 145,-42 199,-42 199,-66"/>
+<text text-anchor="middle" x="172" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">set99</text>
+</g>
+<!-- program~calc_etadot&#45;&gt;set99 -->
+<g id="call~~graph~~CallGraph_edge28" class="edge"><title>program~calc_etadot&#45;&gt;set99</title>
+<path fill="none" stroke="#000000" d="M47.6659,-229.792C54.8362,-199.637 77.2357,-120.762 124,-75 127.324,-71.7477 131.238,-68.9499 135.365,-66.5563"/>
+<polygon fill="#000000" stroke="#000000" points="137.215,-69.5445 144.594,-61.9421 134.085,-63.2833 137.215,-69.5445"/>
+</g>
+<!-- grib_open_file -->
+<g id="call~~graph~~CallGraph_node38" class="node"><title>grib_open_file</title>
+<polygon fill="#777777" stroke="#777777" points="212,-24 132,-24 132,-0 212,-0 212,-24"/>
+<text text-anchor="middle" x="172" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">grib_open_file</text>
+</g>
+<!-- program~calc_etadot&#45;&gt;grib_open_file -->
+<g id="call~~graph~~CallGraph_edge27" class="edge"><title>program~calc_etadot&#45;&gt;grib_open_file</title>
+<path fill="none" stroke="#000000" d="M46.3226,-229.922C50.7572,-194.939 68.1176,-92.2692 124,-33 125.035,-31.9027 126.137,-30.8588 127.294,-29.866"/>
+<polygon fill="#000000" stroke="#000000" points="129.416,-32.6525 135.576,-24.0322 125.385,-26.9298 129.416,-32.6525"/>
+</g>
+<!-- program~calc_etadot&#45;&gt;grib_close_file -->
+<g id="call~~graph~~CallGraph_edge32" class="edge"><title>program~calc_etadot&#45;&gt;grib_close_file</title>
+<path fill="none" stroke="#000000" d="M77.6363,-248.996C112.831,-256.606 170.48,-269.257 220,-281 230.913,-283.588 242.602,-286.463 253.674,-289.234"/>
+<polygon fill="#000000" stroke="#000000" points="253.078,-292.693 263.63,-291.739 254.786,-285.904 253.078,-292.693"/>
+</g>
+</g>
+</svg>
+</div><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.38.0 (20140413.2041)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="560pt" height="32pt"
+ viewBox="0.00 0.00 559.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-28 555.5,-28 555.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node"><title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="64,-24 0,-24 0,-0 64,-0 64,-24"/>
+<text text-anchor="middle" x="32" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node"><title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="136,-24 82,-24 82,-0 136,-0 136,-24"/>
+<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node"><title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="209.5,-24 154.5,-24 154.5,-0 209.5,-0 209.5,-24"/>
+<text text-anchor="middle" x="182" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node4" class="node"><title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="364,-24 228,-24 228,-0 364,-0 364,-24"/>
+<text text-anchor="middle" x="296" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node"><title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="436,-24 382,-24 382,-0 436,-0 436,-24"/>
+<text text-anchor="middle" x="409" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node"><title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="551.5,-24 454.5,-24 454.5,-0 551.5,-0 551.5,-24"/>
+<text text-anchor="middle" x="503" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a procedure to one which it calls. Dashed 
+    arrows point from an interface to procedures which implement that interface.
+    This could include the module procedures in a generic interface or the
+    implementation in a submodule of an interface in a parent module.
+    </p>
+    </div></div></div></div>
+        </div>
+      </div>
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2020 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a>
+                                          </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> Flex_extract: Calculation of etadot was developed by Leopold Haimberger<sup>1</sup></p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

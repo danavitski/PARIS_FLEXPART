@@ -1,0 +1,52 @@
+paths :
+    output : /output
+    run : /scratch 
+    #run : /gpfs/scratch1/shared/rdkok/4Daan/FLEXPART_runs
+    #meteo: /projects/0/ctdas/dkivits/DATA/FLEXPART/meteo
+    meteo: /home/meteo
+
+outgrid :
+    x : [-15, 35, 0.25]
+    y : [33, 73, .25]
+    levels : [100]
+
+observations:
+    #file : /projects/0/ctdas/dkivits/DATA/FLEXPART/code/Obsnew.hdf 
+    file : /home/code/ObsPack2018drought_2022update_withbackground.hdf
+    #file : /TvaritaDirectory/Lut_obs_2018_onegroup.hdf
+
+run :
+    serial : True
+    #serial : False
+    #releases_per_task : 500
+    releases_per_task : 15
+
+releases :
+    length : 14
+    #length : 3
+    altitude_correction : 1
+    mass : ${releases.npart}
+    npart : 10000
+    kindz :
+        threshold : 1000
+
+meteo :
+    #archive : ${rclone:meteostore:FLEXPART/meteo/ea.eurocom025x025}
+    #archive : /projects/0/ctdas/dkivits/DATA/FLEXPART/meteo
+    archive : /home/meteo
+    prefix : 'EA'
+    interv : 1h
+    #cleanup :
+    #    threshold : ${dt:1D}
+    #    nfilesmin : 10000
+    logfile : meteo.log
+
+command :
+    ctl : -1
+    ifine : 0
+    loutaver : 3600
+    loutstep : 3600
+    lagespectra : 1209600
+
+release:
+    species : 24

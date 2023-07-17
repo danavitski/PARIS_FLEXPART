@@ -1,0 +1,3 @@
+Execute calc_etadot in this directory. You should receive the message
+'SUCCESSFULLY FINISHED calc_etadot: CONGRATULATIONS'
+on standard output, and the file fort.15 should exist and contain FLEXPART input in GRIB format (check with grib_ls). 
