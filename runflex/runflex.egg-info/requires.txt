@@ -1,0 +1,14 @@
+loguru
+pandas
+tqdm
+netcdf4
+tables
+h5py
+omegaconf
+gitpython
+distro
+pymdown-extensions
+mkdocs
+
+[interactive]
+ipython

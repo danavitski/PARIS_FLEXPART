@@ -1,0 +1,17 @@
+FLEXPART-SERIAL = flexpart.x
+
+FC       = $(shell /usr/bin/nf-config --fc)
+NCFLAGS  = $(shell /usr/bin/nf-config --fflags --flibs)
+ECFLAGS  = -leccodes_f90
+FFLAGS   = -O2 -m64 -cpp -mcmodel=medium -fconvert=little-endian -ffree-line-length-none -frecord-marker=4 -fbounds-check -DUSE_NCF ${NCFLAGS} ${ECFLAGS}
+
+include dependencies
+
+%.o: %.f90
+	+$(FC) -c $(FFLAGS) $<
+
+clean:
+	\rm -f *.o *.mod
+
+depend dependencies:
+	makedepf90 -o flexpart.x *.f90 > dependencies

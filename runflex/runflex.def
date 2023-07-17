@@ -1,0 +1,12 @@
+Bootstrap: localimage
+From: runflexenv.simg
+
+%post
+    cd /runflex
+    rm -f *.simg *.sif
+    make clean
+    make build
+    make install
+
+%files
+	. /runflex

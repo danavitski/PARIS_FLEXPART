@@ -1,0 +1,17 @@
+FLEXPART-SERIAL = flexpart.x
+
+NCFLAGS  = $(shell nf-config --fflags) $(shell nf-config --flibs) -DUSE_NCF
+ECFLAGS  = -I/usr/lib/x86_64-linux-gnu/fortran/gfortran-mod-15 -leccodes_f90
+FFLAGS   = -O2 -m64 -cpp -mcmodel=medium -fconvert=little-endian -ffree-line-length-none -frecord-marker=4 -fbounds-check -I/usr/include ${NCFLAGS} ${ECFLAGS}
+LIBS = -leccodes_f90 -leccodes -lm -lnetcdff
+
+include dependencies
+
+%.o: %.f90
+	gfortran -c $(FFLAGS) $<
+
+clean:
+	\rm -f *.o *.mod
+
+depend dependencies:
+	makedepf90 -o flexpart.x *.f90 > dependencies

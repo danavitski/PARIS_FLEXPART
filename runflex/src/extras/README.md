@@ -1,0 +1,3 @@
+The aim of that folder is to put FLEXPART source files specific to a local machine/project. For instance, the size of some arrays in `par_mod.f90` may need to be modified depending on the memory available on the machine, and it wouldn't make sense to commit these tweakings in the git repository.
+
+At compilation, the files in the main source folder (defined by the `path.src` rc-file key) are first copied in the build directory (defined by `path.build` in the rc-file). Then, the files in this folder are copied to the same build directory, and overwrite those from the main source directory (provided that the `path.src.extras` rc-key points to here).

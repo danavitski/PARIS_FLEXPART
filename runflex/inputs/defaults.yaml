@@ -1,0 +1,17 @@
+paths :
+  src : ${prefix:src/flexpart10.4}
+  extras : ${prefix:src/extras}
+  build : ${prefix:build/flexpart}
+  command : ${file:COMMAND}
+  run : ${tmp:/var/tmp}
+
+run :
+  logfile : ${paths.run}/flexpart.out
+  continue : True
+  cleanup : False
+
+releases :
+  mass : ${releases.npart}
+
+postprocess :
+  lumia : True

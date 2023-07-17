@@ -1,0 +1,23 @@
+#!/usr/bin/env python
+
+# General imports
+import sys
+from loguru import logger
+from runflex import runflex
+
+# Parse arguments
+args = runflex.parser.parse_args(sys.argv[1:])
+
+# Set the verbosity in the logger (loguru quirks ...)
+logger.remove()
+logger.add(sys.stderr, level=args.verbosity)
+
+# Load the settings
+rcf = runflex.read_conf(**vars(args))
+
+# Compile
+if args.compile :
+    comp = runflex.compile(rcf)
+
+if args.footprints :
+    tasks = runflex.calc_footprints(rcf)
